@@ -1,0 +1,26 @@
+.register-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('./images/seafloor.png');
+    background-size: cover;
+  }
+  
+  .register-content {
+    max-width: 400px; /* Adjust as needed */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+  }
+  
+  .register-content h2 {
+    margin-top: 20px;
+    margin-bottom: 20px; /* Adjust the margin as needed */
+  }
+  

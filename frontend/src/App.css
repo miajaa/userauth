@@ -1,0 +1,83 @@
+/* Container styles */
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('../images/frontpage.jpg');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Georgia', cursive; 
+}
+
+.container {
+  width: 340px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Heading styles */
+h1 {
+  font-size: 24px;
+  margin-bottom: 40px;
+  color: transparent; 
+  position: relative; 
+}
+
+h1::after {
+  content: ''; 
+  background-image: url('../images/banner.png'); 
+  background-size: cover; 
+  position: absolute; 
+  top: 0; 
+  left: 0;
+  width: 105%; 
+  height: 100px; 
+}
+
+p {
+  margin-top: 20px;
+}
+
+/* Input styles */
+input[type="text"],
+input[type="password"] {
+  width: 100%; 
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; 
+}
+
+/* Button styles */
+button {
+  width: calc(100% - 20px); 
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #9c88ff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #6e57cc; 
+}
+
+/* Message styles */
+.message {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #dc3545;
+}
+.register-link {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+}

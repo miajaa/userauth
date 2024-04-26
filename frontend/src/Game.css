@@ -1,0 +1,90 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#game {
+    width: 90%;
+    max-width: 750px;
+    height: 60vh;
+    border: 10px solid rgb(214, 154, 248);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url('../images/seafloor.png');
+    background-size: cover;
+}
+
+#character {
+    width: 10%;
+    aspect-ratio: 1/1;
+    background-image: url('../images/sguiggles.png');
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 60%; /* Adjusted starting position */
+    left: 40%;
+    transform: translate(-50%, -50%);
+}
+
+.block {
+    width: 6%;
+    aspect-ratio: 1/1;
+    position: absolute;
+    animation-duration: 5s; /* Adjusted block movement speed */
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    background-image: url('../images/fish.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.game-over-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+}
+
+.game-over button {
+    margin-top: 20px;
+}
+
+@keyframes block-blue {
+    from { left: 100%; }
+    to { left: 2%; } /* Adjusted to ensure the fish block stays within the game window */
+}
+
+@keyframes jump {
+    0% {
+        top: 15%; /* Initial position */
+    }
+    70% {
+        top: 10%; /* Peak of the jump */
+    }
+    100% {
+        top: 60%; /* Final position */
+    }
+}
+
+
+
+.animate {
+    animation: jump 1000ms forwards; /* Adjusted to make the jump last longer */
+}
+
+/* Stop character and block animations when game is over */
+#game.over #character,
+#game.over .block {
+    animation-play-state: paused;
+}
