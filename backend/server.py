@@ -105,6 +105,9 @@ def register():
         # Generate JWT token
         token = generate_jwt_token(email)
 
+        # Log the response data
+        print("Response Data:", {'message': 'User registered successfully', 'token': token})
+    
         #return jsonify(message='User registered successfully'), 201
         return jsonify(message='User registered successfully', token=token), 201
 

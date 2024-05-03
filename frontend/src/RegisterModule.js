@@ -15,6 +15,7 @@ const RegisterModal = ({ token }) => {
 
   const handleRegister = async () => {
     try {
+      console.log("Token Prop Value:", token);
       if (password !== retypePassword) {
         setMessage('Passwords do not match.');
         return false; // Return unsuccessful
@@ -124,11 +125,12 @@ const RegisterModal = ({ token }) => {
           <div style={{ backgroundColor: '#FF69B4', color: '#fff', padding: '20px', borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }}>
             <h2 style={{alignSelf: 'center'}}> Please validate your email</h2>
           </div>
-          <div style={{ backgroundColor: '#fff', padding: '20px', textAlign: 'center' }}>
+          <div style={{ backgroundColor: '#F9F9F9', padding: '20px', textAlign: 'center' }}>
             <p>The validation email has been sent to the address below</p>
             <p style={{ textAlign: 'center', color: '#6A5ACD'}}>{email}</p>
+            <p>To verify your account and embark on the adventurous journey with Squiggles the Octopus, please click the link below:</p>
             <p id="validation-message"></p>
-            <Link to={`/game?token=${token}`} onClick={() => setShowPopup(false)} style={{ color: '#FF69B4', textDecoration: 'none', alignSelf: 'center' }}>{token}</Link>
+            <Link to={`/game?token=${token}`} onClick={() => setShowPopup(false)} style={{ color: '#FF69B4', textDecoration: 'none', alignSelf: 'center' }}>https://www.jumpingjourneyofsquiggles.com/verify?token={token}</Link>
 
           </div>
         </div>
