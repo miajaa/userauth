@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
 import axios from 'axios';
 
-const CLIENT_ID = '54101202704-gdbicmniaerj0hahatfqu02e6jepmv4g.apps.googleusercontent.com';
-const REDIRECT_URI = 'http://localhost:3000/game';
+const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
 
 const LandingPage = () => {
   const [email, setEmail] = useState('');
@@ -41,6 +41,11 @@ const LandingPage = () => {
       console.error('Registration error:', error);
       setMessage('Registration failed: An error occurred');
     }
+  };
+ 
+  const handleGoogleSignIn = () => {
+    // Redirect to Google OAuth2 authentication
+    window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=token&scope=https://www.googleapis.com/auth/drive.metadata.readonly&include_granted_scopes=true&state=try_sample_request`;
   };
 
   const redirectToGame = () => {
@@ -83,52 +88,6 @@ const LandingPage = () => {
     setGameStarted(true);
   };
 
-  const trySampleRequest = () => {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET',
-      'https://www.googleapis.com/drive/v3/about?fields=user&' +
-      'access_token=' + localStorage.getItem('access_token'));
-    xhr.onreadystatechange = function (e) {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        console.log(xhr.response);
-      } else if (xhr.readyState === 4 && xhr.status === 401) {
-        // Token invalid, so prompt for user permission.
-        oauth2SignIn();
-      }
-    };
-    xhr.send(null);
-  };
-
-  const oauth2SignIn = () => {
-    const oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
-
-    const params = {
-      client_id: CLIENT_ID,
-      redirect_uri: REDIRECT_URI,
-      response_type: 'token',
-      scope: 'https://www.googleapis.com/auth/drive.metadata.readonly',
-      include_granted_scopes: 'true',
-      state: 'try_sample_request',
-    };
-
-    const form = document.createElement('form');
-    form.setAttribute('method', 'GET');
-    form.setAttribute('action', oauth2Endpoint);
-
-    for (const p in params) {
-      const input = document.createElement('input');
-      input.setAttribute('type', 'hidden');
-      input.setAttribute('name', p);
-      input.setAttribute('value', params[p]);
-      form.appendChild(input);
-    }
-
-    document.body.appendChild(form);
-    form.submit();
-  };
-
-
-
   return (
     <div className="container">
       <h1>The Jumping Journey of Squiggles the Octopus</h1>
@@ -161,7 +120,7 @@ const LandingPage = () => {
               <Link to="/register" className="register-link">here</Link>
             </p>
             <button type="button" onClick={handleLogin}>Login</button>
-            <button type="button" onClick={oauth2SignIn}>Sign in with Google</button>
+            <button type="button" onClick={handleGoogleSignIn}>Sign in with Google</button>
           </>
         )}
         {loggedIn && (

@@ -6,6 +6,7 @@ const Game = ({ logout }) => {
   const [isGameOver, setIsGameOver] = useState(false);
   const [blockPosition, setBlockPosition] = useState({ top: 270, left: 750 });
   const [blockInterval, setBlockInterval] = useState(null);
+  const [gameStarted, setGameStarted] = useState(false); // State variable to track if the game has started
 
   useEffect(() => {
     const handleKeyPress = (event) => {
@@ -20,7 +21,59 @@ const Game = ({ logout }) => {
     return () => {
       document.removeEventListener('keydown', handleKeyPress);
     };
-  }, []); // Empty dependency array ensures that the effect runs only once
+  }, []);
+
+  useEffect(() => {
+    if (gameStarted && !isGameOver) { // Start the block movement only if the game has started
+      setBlockInterval(setInterval(() => {
+        setBlockPosition(prevPosition => {
+          const newPosition = { ...prevPosition, left: prevPosition.left - 2 };
+          if (newPosition.left <= -20) {
+            newPosition.left = 750; // Set it to the rightmost position
+          }
+          return newPosition;
+        });
+      }, 5));
+    }
+
+    const checkDead = setInterval(() => {
+      if (!jumping && !isGameOver && gameStarted) { // Check for collision only if the game has started
+        checkCollision();
+      }
+    }, 10);
+
+    return () => {
+      clearInterval(checkDead);
+      clearInterval(blockInterval);
+    };
+  }, [jumping, isGameOver, gameStarted]);
+
+  const handleJump = () => {
+    if (!jumping && !isGameOver && gameStarted) { // Allow jumping only if the game has started
+      setJumping(true);
+      setTimeout(() => {
+        setJumping(false);
+      }, 500);
+      jump();
+    }
+  };
+
+  const handleCollision = () => {
+    setIsGameOver(true);
+  };
+
+  const handleRestartGame = () => {
+    setIsGameOver(false);
+    setBlockPosition({ top: 270, left: 750 });
+  };
+
+  const handleStartGame = () => {
+    setGameStarted(true); // Set the game started state to true when the Start Game button is clicked
+  };
+
+  const handleLogout = () => {
+    logout();
+  };
 
   const jump = () => {
     const character = document.getElementById("character");
@@ -47,65 +100,24 @@ const Game = ({ logout }) => {
     }
   };
 
-  useEffect(() => {
-    if (!isGameOver) {
-      setBlockInterval(setInterval(() => {
-        setBlockPosition(prevPosition => {
-          const newPosition = { ...prevPosition, left: prevPosition.left - 2 };
-          if (newPosition.left <= -20) {
-            newPosition.left = 750; // Set it to the rightmost position
-          }
-          return newPosition;
-        });
-      }, 10));
-    }
-
-    const checkDead = setInterval(() => {
-      if (!jumping && !isGameOver) {
-        checkCollision();
-      }
-    }, 10);
-
-    return () => {
-      clearInterval(checkDead);
-      clearInterval(blockInterval);
-    };
-  }, [jumping, isGameOver]);
-
-  const handleJump = () => {
-    if (!jumping && !isGameOver) {
-      setJumping(true);
-      setTimeout(() => {
-        setJumping(false);
-      }, 500);
-      jump();
-    }
-  };
-
-  const handleCollision = () => {
-    setIsGameOver(true);
-  };
-
-  const handleRestartGame = () => {
-    setIsGameOver(false);
-    setBlockPosition({ top: 270, left: 750 });
-  };
-
-  const handleLogout = () => {
-    logout();
-  };
-
   return (
-    <div id="game" className={isGameOver ? "over" : ""} onClick={handleJump}>
-      <div id="character"></div>
-      <div id="block" className="block" style={{ top: blockPosition.top, left: blockPosition.left }}></div>
-      {isGameOver && (
-        <div className="game-over-container">
-          <div className="game-over">
-            <p>Game Over</p>
-            <button onClick={handleRestartGame}>Restart Game</button>
-            <button onClick={handleLogout}>Logout</button>
-          </div>
+    <div>
+      {!gameStarted && ( // Render the Start Game button if the game has not started
+        <button onClick={handleStartGame}>Start Game</button>
+      )}
+      {gameStarted && ( // Render the game elements only if the game has started
+        <div id="game" className={isGameOver ? "over" : ""} onClick={handleJump}>
+          <div id="character"></div>
+          <div id="block" className="block" style={{ top: blockPosition.top, left: blockPosition.left }}></div>
+          {isGameOver && (
+            <div className="game-over-container">
+              <div className="game-over">
+                <p>Game Over</p>
+                <button onClick={handleRestartGame}>Restart Game</button>
+                <button onClick={handleLogout}>Logout</button>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>

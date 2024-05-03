@@ -7,7 +7,7 @@ const LoggedIn = ({ handleLogout, onStartGame }) => {
 
     const startGame = () => {
         setGameStarted(true);
-        onStartGame(); // Signal the parent component to start the game
+        onStartGame(); 
     };
 
     return (

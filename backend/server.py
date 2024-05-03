@@ -1,12 +1,20 @@
-from flask import Flask, request, jsonify
+import datetime
+from sqlite3 import IntegrityError
+from flask import Flask, request, jsonify, redirect, url_for
 from flask_cors import CORS
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager, create_access_token
 from flask_sqlalchemy import SQLAlchemy
 import os
-import secrets
 import re
 import requests
+from dotenv import load_dotenv
+import datetime
+import jwt
+from sqlalchemy.exc import IntegrityError
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
@@ -14,10 +22,10 @@ bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 
 # Set the secret key for JWT authentication
-app.config['JWT_SECRET_KEY'] = secrets.token_hex(32)
+app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY')
 
 # SQLite configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user_data.db'  # Changed database name to user_data.db
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user_data.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize the SQLite database
@@ -35,15 +43,39 @@ with app.app_context():
     db.create_all()
 
 # Google reCAPTCHA site secret
-RECAPTCHA_SECRET_KEY = '6LcHELQpAAAAAJlJwCg4qIAyP2070MZoN6GLfhjN'
+RECAPTCHA_SECRET_KEY = os.getenv('RECAPTCHA_SECRET_KEY')
+CLIENT_ID = os.getenv('CLIENT_ID')
+REDIRECT_URI = os.getenv('REDIRECT_URI')
+JWT_SECRET_KEY = os.getenv('SECRET_KEY')
+
+# Function to validate email format
+def is_valid_email(email):
+    email_regex = r'^[\w\.-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$'
+    return re.match(email_regex, email) is not None
 
 @app.route('/api/register', methods=['POST'])
 def register():
     try:
+        print("Registration endpoint called")  # Debug print
+        
         data = request.json
-        email = data['email']
-        password = data['password']
-        recaptcha_response = data['recaptchaResponse']  # Get reCAPTCHA response from the frontend
+        print("Request JSON data:", data)  # Debug print
+        
+        if not data:
+            return jsonify(error='No JSON data provided'), 400
+        
+        email = data.get('email')
+        password = data.get('password')
+        recaptcha_response = data.get('recaptchaResponse')
+        
+        if not email or not password or not recaptcha_response:
+            return jsonify(error='Email, password, or recaptchaResponse missing in request'), 400
+        
+        print("Email:", email)  # Debug print
+        
+        # Validate email format
+        if not is_valid_email(email):
+            return jsonify(error='Invalid email format'), 400
         
         # Verify the reCAPTCHA response with Google's reCAPTCHA API
         recaptcha_verification = requests.post(
@@ -52,7 +84,7 @@ def register():
         ).json()
 
         # Check if reCAPTCHA verification was successful
-        if not recaptcha_verification['success']:
+        if not recaptcha_verification.get('success'):
             return jsonify(error='reCAPTCHA verification failed'), 400
         
         # Check if the user already exists
@@ -65,15 +97,33 @@ def register():
                 or not re.search("[0-9]", password) or not re.search("[!@#$%^&*()-_=+{};:,<.>]", password):
             return jsonify(error='Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.'), 400
         
-        hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')  # Decode the hashed password
+        # Hash the password
+        hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
+        
+        # Create a new user
         new_user = User(email=email, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
-        return jsonify(message='User registered successfully'), 201
+
+        # Generate JWT token with timezone-aware datetime
+        token_payload = {
+            'email': email,
+            'exp': (datetime.datetime.utcnow() + datetime.timedelta(days=1)).timestamp()  # Token expires in 1 day
+        }
+        token = jwt.encode(token_payload, JWT_SECRET_KEY, algorithm='HS256')
+
+        return jsonify(message='User registered successfully', token=token.decode('utf-8')), 201
+    
+    except IntegrityError as ie:
+        db.session.rollback()
+        print("IntegrityError:", ie)  # Debug print
+        return jsonify(error='User already exists'), 400
+    
     except Exception as e:
-        print(e)
+        print("Exception:", e)  # Debug print
         return jsonify(error='Registration failed'), 500
 
+# Route for user login
 @app.route('/api/login', methods=['POST'])
 def login():
     try:
@@ -92,6 +142,33 @@ def login():
     except Exception as e:
         print(e)
         return jsonify(error='Login failed'), 500
+
+# Route for OAuth2 authentication callback
+@app.route('/api/oauth2/callback', methods=['GET'])
+def oauth2_callback():
+    try:
+        access_token = request.args.get('access_token')
+        if not access_token:
+            return jsonify(error='Access token missing'), 400
+
+        # Verify access token with Google's OAuth2 API
+        verify_token_url = 'https://www.googleapis.com/oauth2/v3/tokeninfo'
+        response = requests.get(verify_token_url, params={'access_token': access_token})
+        if response.status_code == 200:
+            user_info = response.json()
+            email = user_info.get('email')
+            if email:
+                # Create access token for the user
+                access_token = create_access_token(identity=email)
+                return jsonify(token=access_token), 200
+            else:
+                return jsonify(error='Email not found in user info'), 400
+        else:
+            return jsonify(error='Failed to verify access token'), 400
+
+    except Exception as e:
+        print(e)
+        return jsonify(error='OAuth2 callback failed'), 500
         
 if __name__ == '__main__':
     app.run(debug=True)
