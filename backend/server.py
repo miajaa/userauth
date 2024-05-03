@@ -1,6 +1,6 @@
 import datetime
 from sqlite3 import IntegrityError
-from flask import Flask, request, jsonify, redirect, url_for
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager, create_access_token
@@ -9,9 +9,6 @@ import os
 import re
 import requests
 from dotenv import load_dotenv
-import datetime
-import jwt
-from sqlalchemy.exc import IntegrityError
 
 # Load environment variables from .env file
 load_dotenv()
@@ -22,7 +19,7 @@ bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 
 # Set the secret key for JWT authentication
-app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY')
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
 # SQLite configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user_data.db'
@@ -46,21 +43,23 @@ with app.app_context():
 RECAPTCHA_SECRET_KEY = os.getenv('RECAPTCHA_SECRET_KEY')
 CLIENT_ID = os.getenv('CLIENT_ID')
 REDIRECT_URI = os.getenv('REDIRECT_URI')
-JWT_SECRET_KEY = os.getenv('SECRET_KEY')
+
+# Function to generate JWT token
+def generate_jwt_token(email):
+    # Generate the JWT token
+    token = create_access_token(identity=email)
+    return token
 
 # Function to validate email format
 def is_valid_email(email):
     email_regex = r'^[\w\.-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$'
     return re.match(email_regex, email) is not None
 
+# Route for user registration
 @app.route('/api/register', methods=['POST'])
 def register():
     try:
-        print("Registration endpoint called")  # Debug print
-        
         data = request.json
-        print("Request JSON data:", data)  # Debug print
-        
         if not data:
             return jsonify(error='No JSON data provided'), 400
         
@@ -70,8 +69,6 @@ def register():
         
         if not email or not password or not recaptcha_response:
             return jsonify(error='Email, password, or recaptchaResponse missing in request'), 400
-        
-        print("Email:", email)  # Debug print
         
         # Validate email format
         if not is_valid_email(email):
@@ -104,23 +101,19 @@ def register():
         new_user = User(email=email, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
+        
+        # Generate JWT token
+        token = generate_jwt_token(email)
 
-        # Generate JWT token with timezone-aware datetime
-        token_payload = {
-            'email': email,
-            'exp': (datetime.datetime.utcnow() + datetime.timedelta(days=1)).timestamp()  # Token expires in 1 day
-        }
-        token = jwt.encode(token_payload, JWT_SECRET_KEY, algorithm='HS256')
+        #return jsonify(message='User registered successfully'), 201
+        return jsonify(message='User registered successfully', token=token), 201
 
-        return jsonify(message='User registered successfully', token=token.decode('utf-8')), 201
-    
-    except IntegrityError as ie:
+    except IntegrityError:
         db.session.rollback()
-        print("IntegrityError:", ie)  # Debug print
         return jsonify(error='User already exists'), 400
     
     except Exception as e:
-        print("Exception:", e)  # Debug print
+        print(e)
         return jsonify(error='Registration failed'), 500
 
 # Route for user login
