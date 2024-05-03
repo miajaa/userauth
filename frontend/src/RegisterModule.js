@@ -1,17 +1,17 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
 import axios from 'axios';
 import './RegisterModule.css';
 
-const RegisterModal = ({ handleClose }) => {
+const RegisterModal = ({ token }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [retypePassword, setRetypePassword] = useState('');
   const [captchaValue, setCaptchaValue] = useState('');
   const [message, setMessage] = useState('');
   const [showPopup, setShowPopup] = useState(false);
-  const [token, setToken] = useState('');
 
   const handleRegister = async () => {
     try {
@@ -33,7 +33,6 @@ const RegisterModal = ({ handleClose }) => {
 
       if (response.data.message === 'User registered successfully') {
         setMessage(response.data.message);
-        setToken(response.data.token); // Set the token received from backend
         return true; // Return successful
       }
     } catch (error) {
@@ -79,7 +78,6 @@ const RegisterModal = ({ handleClose }) => {
       setShowPopup(true);
     }
   };
-
   return (
     <div className="register-page">
       <div className="register-content-container">
@@ -130,11 +128,14 @@ const RegisterModal = ({ handleClose }) => {
             <p>The validation email has been sent to the address below</p>
             <p style={{ textAlign: 'center', color: '#6A5ACD'}}>{email}</p>
             <p id="validation-message"></p>
-            {/* Append token to the link */}
-            <Link to={`/game?token=${token}`} onClick={() => setShowPopup(false)} style={{ color: '#FF69B4', textDecoration: 'none', alignSelf: 'center' }}>Close</Link>
+            <Link to={`/game?token=${token}`} onClick={() => setShowPopup(false)} style={{ color: '#FF69B4', textDecoration: 'none', alignSelf: 'center' }}>{token}</Link>
+
           </div>
         </div>
       )}
+
+
+
     </div>
   );
 };
