@@ -1,4 +1,4 @@
-import datetime
+import logging
 from sqlite3 import IntegrityError
 from flask import Flask, request, jsonify
 from flask_cors import CORS
@@ -28,9 +28,17 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Initialize the SQLite database
 db = SQLAlchemy(app)
 
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    filename='app.log',
+    filemode='a'
+)
+
 # User model
 class User(db.Model):
-    __tablename__ = 'users'  # Specify the table name explicitly
+    __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(100), nullable=False)
@@ -41,12 +49,9 @@ with app.app_context():
 
 # Google reCAPTCHA site secret
 RECAPTCHA_SECRET_KEY = os.getenv('RECAPTCHA_SECRET_KEY')
-CLIENT_ID = os.getenv('CLIENT_ID')
-REDIRECT_URI = os.getenv('REDIRECT_URI')
 
 # Function to generate JWT token
 def generate_jwt_token(email):
-    # Generate the JWT token
     token = create_access_token(identity=email)
     return token
 
@@ -61,62 +66,59 @@ def register():
     try:
         data = request.json
         if not data:
-            return jsonify(error='No JSON data provided'), 400
+            logging.error("[NO_JSON_DATA] ERROR: No JSON data provided")
+            return jsonify(error='not data: No JSON data provided'), 400
         
         email = data.get('email')
         password = data.get('password')
         recaptcha_response = data.get('recaptchaResponse')
         
         if not email or not password or not recaptcha_response:
+            logging.error("[REQ_ERR] ERROR: Email, password, or recaptchaResponse missing in request")
             return jsonify(error='Email, password, or recaptchaResponse missing in request'), 400
         
-        # Validate email format
         if not is_valid_email(email):
+            logging.error("[EMAIL_ERR] ERROR: Invalid email format")
             return jsonify(error='Invalid email format'), 400
         
-        # Verify the reCAPTCHA response with Google's reCAPTCHA API
         recaptcha_verification = requests.post(
             'https://www.google.com/recaptcha/api/siteverify',
             data={'secret': RECAPTCHA_SECRET_KEY, 'response': recaptcha_response}
         ).json()
 
-        # Check if reCAPTCHA verification was successful
         if not recaptcha_verification.get('success'):
+            logging.error("[RECAPTCHA_ERR] ERROR: reCAPTCHA verification failed")
             return jsonify(error='reCAPTCHA verification failed'), 400
         
-        # Check if the user already exists
         existing_user = User.query.filter_by(email=email).first()
         if existing_user:
+            logging.error("[USR_ERR] ERROR: User already exists")
             return jsonify(error='User already exists'), 400
         
-        # Check password strength
         if len(password) < 8 or not re.search("[a-z]", password) or not re.search("[A-Z]", password) \
                 or not re.search("[0-9]", password) or not re.search("[!@#$%^&*()-_=+{};:,<.>]", password):
+            logging.error("[WL_ERR] ERROR: Invalid password: Password complexity requirements not met ")
             return jsonify(error='Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.'), 400
         
-        # Hash the password
         hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
         
-        # Create a new user
         new_user = User(email=email, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
         
-        # Generate JWT token
         token = generate_jwt_token(email)
 
-        # Log the response data
-        print("Response Data:", {'message': 'User registered successfully', 'token': token})
-    
-        #return jsonify(message='User registered successfully'), 201
+        logging.info("[INFO-REG-SUCCESS] User registered successfully: %s", email)
+
         return jsonify(message='User registered successfully', token=token), 201
 
     except IntegrityError:
         db.session.rollback()
+        logging.error("[ERR-REG-INT] User registration failed: IntegrityError")
         return jsonify(error='User already exists'), 400
     
     except Exception as e:
-        print(e)
+        logging.error("[ERR-REG-FAIL] ERROR: User registration failed: %s", str(e))
         return jsonify(error='Registration failed'), 500
 
 # Route for user login
@@ -124,8 +126,8 @@ def register():
 def login():
     try:
         data = request.json
-        email = data.get('email')  # Use .get() to avoid KeyError if email is missing
-        password = data.get('password')  # Use .get() to avoid KeyError if password is missing
+        email = data.get('email')
+        password = data.get('password')
         if not email or not password:
             return jsonify(error='Missing email or password in request'), 400
 
@@ -136,7 +138,7 @@ def login():
         else:
             return jsonify(error='Incorrect email or password'), 401
     except Exception as e:
-        print(e)
+        logging.error("Login failed: %s", str(e))
         return jsonify(error='Login failed'), 500
 
 # Route for OAuth2 authentication callback
@@ -147,14 +149,12 @@ def oauth2_callback():
         if not access_token:
             return jsonify(error='Access token missing'), 400
 
-        # Verify access token with Google's OAuth2 API
         verify_token_url = 'https://www.googleapis.com/oauth2/v3/tokeninfo'
         response = requests.get(verify_token_url, params={'access_token': access_token})
         if response.status_code == 200:
             user_info = response.json()
             email = user_info.get('email')
             if email:
-                # Create access token for the user
                 access_token = create_access_token(identity=email)
                 return jsonify(token=access_token), 200
             else:
@@ -163,8 +163,8 @@ def oauth2_callback():
             return jsonify(error='Failed to verify access token'), 400
 
     except Exception as e:
-        print(e)
+        logging.error("OAuth2 callback failed: %s", str(e))
         return jsonify(error='OAuth2 callback failed'), 500
-        
+
 if __name__ == '__main__':
     app.run(debug=True)
