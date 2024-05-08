@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
 import axios from 'axios';
 
+// Define environment variables
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
 
 const LandingPage = () => {
+  // State variables
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -14,76 +16,62 @@ const LandingPage = () => {
   const [gameStarted, setGameStarted] = useState(false);
   const [captchaValue, setCaptchaValue] = useState(null);
 
-  const handleRegister = async () => {
-    try {
-      if (!captchaValue) {
-        setMessage('Please complete the CAPTCHA.');
-        return;
-      }
-
-      if (password.length < 8 || !/[a-z]/.test(password) || !/[A-Z]/.test(password) || !/\d/.test(password) || !/[!@#$%^&*()-_=+{};:,<.>]/.test(password)) {
-        setMessage('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.');
-        return;
-      }
-
-      const response = await axios.post('http://localhost:5000/api/register', {
-        email,
-        password,
-        recaptchaResponse: captchaValue,
-      });
-
-      if (response.data.message) {
-        setMessage(response.data.message);
-      } else {
-        setMessage('Registration failed: Unexpected response from server');
-      }
-    } catch (error) {
-      console.error('Registration error:', error);
-      setMessage('Registration failed: An error occurred');
-    }
-  };
- 
+  // Function to handle Google sign-in
   const handleGoogleSignIn = () => {
     // Redirect to Google OAuth2 authentication
     window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=token&scope=https://www.googleapis.com/auth/drive.metadata.readonly&include_granted_scopes=true&state=try_sample_request`;
   };
 
-  const redirectToGame = () => {
-    window.location.href = '/game';
+  // Function to redirect to the game page with the token
+  const redirectToGame = (token) => {
+    // Append the token as a query parameter to the game URI
+    const gameUrl = `/game?token=${encodeURIComponent(token)}`;
+    // Redirect the user to the game page
+    window.location.href = gameUrl;
   };
 
+  // Function to handle user login
   const handleLogin = async () => {
     try {
+      // Validate CAPTCHA
       if (!captchaValue) {
         setMessage('Please complete the CAPTCHA.');
         return;
       }
   
+      // Send login request to the server
       const response = await axios.post('http://localhost:5000/api/login', {
         email,
         password,
         recaptchaResponse: captchaValue,
       });
-  
-      localStorage.setItem('token', response.data.token);
-      setMessage('Login successful');
-      setLoggedIn(true);
       
-      // Redirect to game
-      redirectToGame();
+      // Handle server response
+      const { token } = response.data;
+      if (token) {
+        // Store the hashed token in local storage
+        localStorage.setItem('hashedToken', token);
+        console.log('Hashed Access Token:', token); 
+
+        // Set logged-in state
+        setLoggedIn(true);
+        
+        // Redirect to the game page with the token
+        redirectToGame(token); 
+      }
     } catch (error) {
       setMessage('Authentication failed: username or password was incorrect');
     }
   };
-  
 
-   // Define the logout function
-   const handleLogout = () => {
+  // Define the logout function
+  const handleLogout = () => {
     localStorage.removeItem('token');
     setLoggedIn(false);
     window.location.href = '/';
   };
 
+  // Function to handle starting the game
   const handleStartGame = () => {
     setGameStarted(true);
   };
@@ -122,16 +110,6 @@ const LandingPage = () => {
             <button type="button" onClick={handleLogin}>Login</button>
             <button type="button" onClick={handleGoogleSignIn}>Sign in with Google</button>
           </>
-        )}
-        {loggedIn && (
-          <div>
-            <button onClick={handleLogout}>Logout</button>
-            {!gameStarted ? (
-              <button onClick={handleStartGame}>Start Game</button>
-            ) : (
-              <Link to="/game">Play Game</Link>
-            )}
-          </div>
         )}
       </form>
       {message && <p className="message">{message}</p>}

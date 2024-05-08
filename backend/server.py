@@ -1,17 +1,28 @@
+import datetime
+import hashlib
 import logging
+import secrets
 from sqlite3 import IntegrityError
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from flask_bcrypt import Bcrypt
-from flask_jwt_extended import JWTManager, create_access_token
+from flask_jwt_extended import JWTManager, create_access_token, decode_token
+from jwt import ExpiredSignatureError, InvalidTokenError
 from flask_sqlalchemy import SQLAlchemy
 import os
 import re
 import requests
 from dotenv import load_dotenv
+from flask import jsonify, make_response
+from cryptography.fernet import Fernet
 
 # Load environment variables from .env file
-load_dotenv()
+load_dotenv()    
+# Google reCAPTCHA site secret
+RECAPTCHA_SECRET_KEY = os.getenv('RECAPTCHA_SECRET_KEY')
+# Secret key 
+SECRET_KEY = os.getenv("SECRET_KEY")
+################################################################
 
 app = Flask(__name__)
 CORS(app)
@@ -24,6 +35,8 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 # SQLite configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user_data.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+################################################################
 
 # Initialize the SQLite database
 db = SQLAlchemy(app)
@@ -47,8 +60,8 @@ class User(db.Model):
 with app.app_context():
     db.create_all()
 
-# Google reCAPTCHA site secret
-RECAPTCHA_SECRET_KEY = os.getenv('RECAPTCHA_SECRET_KEY')
+
+#######################################################################
 
 # Function to generate JWT token
 def generate_jwt_token(email):
@@ -59,6 +72,10 @@ def generate_jwt_token(email):
 def is_valid_email(email):
     email_regex = r'^[\w\.-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$'
     return re.match(email_regex, email) is not None
+
+#######################################################################
+
+## ---------------------------------ROUTES--------------------------------- ##
 
 # Route for user registration
 @app.route('/api/register', methods=['POST'])
@@ -106,11 +123,14 @@ def register():
         db.session.add(new_user)
         db.session.commit()
         
-        token = generate_jwt_token(email)
-
+        # Generate a unique salt for each user
+        salt = hashlib.sha256(email.encode()).hexdigest()
+        # Create a token with the user's email and the salt
+        access_token = create_access_token(identity=email + salt)
         logging.info("[INFO-REG-SUCCESS] User registered successfully: %s", email)
+        print("Generated ¨REGISTER Token:", access_token)
 
-        return jsonify(message='User registered successfully', token=token), 201
+        return jsonify(message='User registered successfully', token=access_token), 201
 
     except IntegrityError:
         db.session.rollback()
@@ -121,6 +141,7 @@ def register():
         logging.error("[ERR-REG-FAIL] ERROR: User registration failed: %s", str(e))
         return jsonify(error='Registration failed'), 500
 
+    
 # Route for user login
 @app.route('/api/login', methods=['POST'])
 def login():
@@ -133,13 +154,49 @@ def login():
 
         user = User.query.filter_by(email=email).first()
         if user and bcrypt.check_password_hash(user.password, password):
-            access_token = create_access_token(identity=user.email)
+            # Generate a unique salt for each user
+            salt = hashlib.sha256(user.email.encode()).hexdigest()
+            # Create a token with the user's email and the salt
+            access_token = create_access_token(identity=user.email + salt)
+            print("Generated Access Token:", access_token)
             return jsonify(token=access_token), 200
         else:
             return jsonify(error='Incorrect email or password'), 401
     except Exception as e:
         logging.error("Login failed: %s", str(e))
         return jsonify(error='Login failed'), 500
+
+# Route for validating token
+@app.route('/api/validate_token', methods=['POST'])
+def validate_token_route():
+    try:
+        data = request.json
+        token = data.get('token')
+        email = data.get('email')
+        if not token or not email:
+            return jsonify(error='Missing token or email in request'), 400
+        # Retrieve the user from the email
+        user = User.query.filter_by(email=email).first()
+        if not user:
+            return jsonify(error='User not found'), 404
+        # Generate the salt for the user
+        salt = hashlib.sha256(user.email.encode()).hexdigest()
+        # Regenerate the token using the email and salt
+        regenerated_token = create_access_token(identity=user.email + salt)
+        # Check if the provided token matches the regenerated token
+        if token == regenerated_token:
+            return jsonify(message='Token is valid'), 200
+        else:
+            return jsonify(error='Invalid token'), 401
+    except ExpiredSignatureError:
+        return jsonify(error='Token has expired'), 401
+    except InvalidTokenError:
+        return jsonify(error='Invalid token'), 401
+    except Exception as e:
+        logging.error("Token validation failed: %s", str(e))
+        return jsonify(error='Token validation failed'), 500
+
+
 
 # Route for OAuth2 authentication callback
 @app.route('/api/oauth2/callback', methods=['GET'])
