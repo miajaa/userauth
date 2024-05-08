@@ -24,3 +24,409 @@
 2024-05-06 11:40:58,392 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
 2024-05-06 11:41:00,212 - WARNING -  * Debugger is active!
 2024-05-06 11:41:00,228 - INFO -  * Debugger PIN: 140-765-487
+2024-05-08 12:31:45,179 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-05-08 12:31:45,180 - INFO - [33mPress CTRL+C to quit[0m
+2024-05-08 12:31:45,181 - INFO -  * Restarting with stat
+2024-05-08 12:31:46,263 - WARNING -  * Debugger is active!
+2024-05-08 12:31:46,263 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 12:35:21,740 - INFO - 127.0.0.1 - - [08/May/2024 12:35:21] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 12:35:22,006 - INFO - The CSRF token is missing.
+2024-05-08 12:35:22,008 - INFO - 127.0.0.1 - - [08/May/2024 12:35:22] "[31m[1mPOST /api/login HTTP/1.1[0m" 400 -
+2024-05-08 12:35:37,327 - INFO - 127.0.0.1 - - [08/May/2024 12:35:37] "OPTIONS /api/register HTTP/1.1" 200 -
+2024-05-08 12:35:37,638 - INFO - The CSRF token is missing.
+2024-05-08 12:35:37,638 - INFO - 127.0.0.1 - - [08/May/2024 12:35:37] "[31m[1mPOST /api/register HTTP/1.1[0m" 400 -
+2024-05-08 12:35:50,918 - INFO - 127.0.0.1 - - [08/May/2024 12:35:50] "OPTIONS /api/register HTTP/1.1" 200 -
+2024-05-08 12:35:51,231 - INFO - The CSRF token is missing.
+2024-05-08 12:35:51,231 - INFO - 127.0.0.1 - - [08/May/2024 12:35:51] "[31m[1mPOST /api/register HTTP/1.1[0m" 400 -
+2024-05-08 12:36:21,742 - INFO - 127.0.0.1 - - [08/May/2024 12:36:21] "OPTIONS /api/register HTTP/1.1" 200 -
+2024-05-08 12:36:22,056 - INFO - The CSRF token is missing.
+2024-05-08 12:36:22,056 - INFO - 127.0.0.1 - - [08/May/2024 12:36:22] "[31m[1mPOST /api/register HTTP/1.1[0m" 400 -
+2024-05-08 12:37:05,188 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 12:37:05,337 - INFO -  * Restarting with stat
+2024-05-08 12:37:06,527 - WARNING -  * Debugger is active!
+2024-05-08 12:37:06,529 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 12:37:11,256 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-05-08 12:37:11,256 - INFO - [33mPress CTRL+C to quit[0m
+2024-05-08 12:37:11,256 - INFO -  * Restarting with stat
+2024-05-08 12:37:12,256 - WARNING -  * Debugger is active!
+2024-05-08 12:37:12,272 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 12:37:19,886 - INFO - 127.0.0.1 - - [08/May/2024 12:37:19] "OPTIONS /api/register HTTP/1.1" 200 -
+2024-05-08 12:37:20,889 - INFO - [INFO-REG-SUCCESS] User registered successfully: moivaan1@gmail.com
+2024-05-08 12:37:20,889 - INFO - 127.0.0.1 - - [08/May/2024 12:37:20] "[35m[1mPOST /api/register HTTP/1.1[0m" 201 -
+2024-05-08 12:37:21,147 - ERROR - [RECAPTCHA_ERR] ERROR: reCAPTCHA verification failed
+2024-05-08 12:37:21,147 - INFO - 127.0.0.1 - - [08/May/2024 12:37:21] "[31m[1mPOST /api/register HTTP/1.1[0m" 400 -
+2024-05-08 12:37:22,022 - ERROR - [RECAPTCHA_ERR] ERROR: reCAPTCHA verification failed
+2024-05-08 12:37:22,022 - INFO - 127.0.0.1 - - [08/May/2024 12:37:22] "[31m[1mPOST /api/register HTTP/1.1[0m" 400 -
+2024-05-08 12:39:06,264 - INFO - 127.0.0.1 - - [08/May/2024 12:39:06] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 12:39:06,795 - INFO - 127.0.0.1 - - [08/May/2024 12:39:06] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 12:41:39,061 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 12:41:39,193 - INFO -  * Restarting with stat
+2024-05-08 12:41:40,381 - WARNING -  * Debugger is active!
+2024-05-08 12:41:40,383 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 12:43:04,786 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 12:43:04,911 - INFO -  * Restarting with stat
+2024-05-08 12:43:06,039 - WARNING -  * Debugger is active!
+2024-05-08 12:43:06,043 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 12:44:50,937 - INFO - 127.0.0.1 - - [08/May/2024 12:44:50] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 12:44:51,464 - INFO - 127.0.0.1 - - [08/May/2024 12:44:51] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 12:47:42,899 - INFO - 127.0.0.1 - - [08/May/2024 12:47:42] "OPTIONS /api/register HTTP/1.1" 200 -
+2024-05-08 12:47:43,164 - ERROR - [EMAIL_ERR] ERROR: Invalid email format
+2024-05-08 12:47:43,164 - INFO - 127.0.0.1 - - [08/May/2024 12:47:43] "[31m[1mPOST /api/register HTTP/1.1[0m" 400 -
+2024-05-08 12:47:52,387 - INFO - 127.0.0.1 - - [08/May/2024 12:47:52] "OPTIONS /api/register HTTP/1.1" 200 -
+2024-05-08 12:47:53,563 - INFO - [INFO-REG-SUCCESS] User registered successfully: moivaan11@gmail.com
+2024-05-08 12:47:53,563 - INFO - 127.0.0.1 - - [08/May/2024 12:47:53] "[35m[1mPOST /api/register HTTP/1.1[0m" 201 -
+2024-05-08 12:48:13,667 - INFO - 127.0.0.1 - - [08/May/2024 12:48:13] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 12:48:14,245 - INFO - 127.0.0.1 - - [08/May/2024 12:48:14] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 12:54:50,500 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 12:54:50,633 - INFO -  * Restarting with stat
+2024-05-08 13:07:50,902 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-05-08 13:07:50,902 - INFO - [33mPress CTRL+C to quit[0m
+2024-05-08 13:07:50,902 - INFO -  * Restarting with stat
+2024-05-08 13:07:51,933 - WARNING -  * Debugger is active!
+2024-05-08 13:07:51,933 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 13:08:06,507 - INFO - 127.0.0.1 - - [08/May/2024 13:08:06] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 13:08:07,002 - INFO - 127.0.0.1 - - [08/May/2024 13:08:07] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 13:09:21,074 - INFO - 127.0.0.1 - - [08/May/2024 13:09:21] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 13:09:21,614 - INFO - 127.0.0.1 - - [08/May/2024 13:09:21] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 13:10:34,935 - INFO - 127.0.0.1 - - [08/May/2024 13:10:34] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 13:10:35,449 - INFO - 127.0.0.1 - - [08/May/2024 13:10:35] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 13:28:19,616 - INFO - 127.0.0.1 - - [08/May/2024 13:28:19] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 13:28:20,147 - INFO - 127.0.0.1 - - [08/May/2024 13:28:20] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 13:29:02,731 - INFO - 127.0.0.1 - - [08/May/2024 13:29:02] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 13:29:03,297 - INFO - 127.0.0.1 - - [08/May/2024 13:29:03] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 13:33:41,041 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 13:33:41,182 - INFO -  * Restarting with stat
+2024-05-08 13:33:42,416 - WARNING -  * Debugger is active!
+2024-05-08 13:33:42,416 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 13:34:41,150 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 13:34:41,284 - INFO -  * Restarting with stat
+2024-05-08 13:34:42,389 - WARNING -  * Debugger is active!
+2024-05-08 13:34:42,389 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 13:35:49,304 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 13:35:49,437 - INFO -  * Restarting with stat
+2024-05-08 13:35:50,588 - WARNING -  * Debugger is active!
+2024-05-08 13:35:50,588 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 13:36:26,714 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 13:36:26,854 - INFO -  * Restarting with stat
+2024-05-08 13:36:28,037 - WARNING -  * Debugger is active!
+2024-05-08 13:36:28,040 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 13:38:41,762 - INFO - 127.0.0.1 - - [08/May/2024 13:38:41] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 13:38:42,315 - ERROR - Login failed: 'JWTManager' object has no attribute 'encode'
+2024-05-08 13:38:42,315 - INFO - 127.0.0.1 - - [08/May/2024 13:38:42] "[35m[1mPOST /api/login HTTP/1.1[0m" 500 -
+2024-05-08 13:38:47,001 - INFO - 127.0.0.1 - - [08/May/2024 13:38:47] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 13:38:47,577 - ERROR - Login failed: 'JWTManager' object has no attribute 'encode'
+2024-05-08 13:38:47,577 - INFO - 127.0.0.1 - - [08/May/2024 13:38:47] "[35m[1mPOST /api/login HTTP/1.1[0m" 500 -
+2024-05-08 13:38:58,483 - INFO - 127.0.0.1 - - [08/May/2024 13:38:58] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 13:38:59,044 - ERROR - Login failed: 'JWTManager' object has no attribute 'encode'
+2024-05-08 13:38:59,044 - INFO - 127.0.0.1 - - [08/May/2024 13:38:59] "[35m[1mPOST /api/login HTTP/1.1[0m" 500 -
+2024-05-08 13:39:13,117 - INFO - 127.0.0.1 - - [08/May/2024 13:39:13] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 13:39:13,663 - ERROR - Login failed: 'JWTManager' object has no attribute 'encode'
+2024-05-08 13:39:13,663 - INFO - 127.0.0.1 - - [08/May/2024 13:39:13] "[35m[1mPOST /api/login HTTP/1.1[0m" 500 -
+2024-05-08 13:39:23,059 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 13:39:23,215 - INFO -  * Restarting with stat
+2024-05-08 13:39:24,441 - WARNING -  * Debugger is active!
+2024-05-08 13:39:24,456 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 13:39:24,488 - INFO - 127.0.0.1 - - [08/May/2024 13:39:24] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 13:39:24,769 - ERROR - Login failed: 'JWTManager' object has no attribute 'encode'
+2024-05-08 13:39:24,769 - INFO - 127.0.0.1 - - [08/May/2024 13:39:24] "[35m[1mPOST /api/login HTTP/1.1[0m" 500 -
+2024-05-08 13:39:28,645 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 13:39:28,761 - INFO -  * Restarting with stat
+2024-05-08 13:39:29,949 - WARNING -  * Debugger is active!
+2024-05-08 13:39:29,951 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 13:39:31,910 - INFO - 127.0.0.1 - - [08/May/2024 13:39:31] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 13:39:32,442 - ERROR - Login failed: 'JWTManager' object has no attribute 'encode'
+2024-05-08 13:39:32,442 - INFO - 127.0.0.1 - - [08/May/2024 13:39:32] "[35m[1mPOST /api/login HTTP/1.1[0m" 500 -
+2024-05-08 13:39:45,429 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 13:39:45,662 - INFO -  * Restarting with stat
+2024-05-08 13:39:46,939 - WARNING -  * Debugger is active!
+2024-05-08 13:39:46,939 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 13:39:53,060 - INFO - 127.0.0.1 - - [08/May/2024 13:39:53] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 13:39:53,592 - INFO - 127.0.0.1 - - [08/May/2024 13:39:53] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 13:40:30,243 - INFO - 127.0.0.1 - - [08/May/2024 13:40:30] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 13:40:30,800 - INFO - 127.0.0.1 - - [08/May/2024 13:40:30] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 13:41:08,395 - INFO - 127.0.0.1 - - [08/May/2024 13:41:08] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 13:41:08,941 - INFO - 127.0.0.1 - - [08/May/2024 13:41:08] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 13:43:22,222 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 13:43:22,353 - INFO -  * Restarting with stat
+2024-05-08 13:43:23,611 - WARNING -  * Debugger is active!
+2024-05-08 13:43:23,614 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 13:44:36,736 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 13:44:36,869 - INFO -  * Restarting with stat
+2024-05-08 13:44:38,181 - WARNING -  * Debugger is active!
+2024-05-08 13:44:38,181 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 13:45:02,966 - INFO - 127.0.0.1 - - [08/May/2024 13:45:02] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 13:45:03,763 - INFO - 127.0.0.1 - - [08/May/2024 13:45:03] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 13:45:32,563 - INFO - 127.0.0.1 - - [08/May/2024 13:45:32] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 13:45:32,871 - INFO - 127.0.0.1 - - [08/May/2024 13:45:32] "[31m[1mPOST /api/login HTTP/1.1[0m" 401 -
+2024-05-08 13:45:42,392 - INFO - 127.0.0.1 - - [08/May/2024 13:45:42] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 13:45:43,214 - INFO - 127.0.0.1 - - [08/May/2024 13:45:43] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 13:47:23,991 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 13:47:24,109 - INFO -  * Restarting with stat
+2024-05-08 13:47:25,319 - WARNING -  * Debugger is active!
+2024-05-08 13:47:25,330 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 13:47:44,957 - INFO - 127.0.0.1 - - [08/May/2024 13:47:44] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 13:47:45,738 - INFO - 127.0.0.1 - - [08/May/2024 13:47:45] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 13:48:01,343 - INFO - 127.0.0.1 - - [08/May/2024 13:48:01] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 13:48:02,169 - INFO - 127.0.0.1 - - [08/May/2024 13:48:02] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 13:48:39,171 - INFO - 127.0.0.1 - - [08/May/2024 13:48:39] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 13:48:40,019 - INFO - 127.0.0.1 - - [08/May/2024 13:48:40] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 13:50:53,476 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 13:50:53,609 - INFO -  * Restarting with stat
+2024-05-08 13:50:54,941 - WARNING -  * Debugger is active!
+2024-05-08 13:50:54,956 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 13:52:40,050 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 13:52:40,175 - INFO -  * Restarting with stat
+2024-05-08 14:01:02,814 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-05-08 14:01:02,814 - INFO - [33mPress CTRL+C to quit[0m
+2024-05-08 14:01:02,817 - INFO -  * Restarting with stat
+2024-05-08 14:01:03,900 - WARNING -  * Debugger is active!
+2024-05-08 14:01:03,900 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 14:01:17,662 - INFO - 127.0.0.1 - - [08/May/2024 14:01:17] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:01:18,468 - INFO - 127.0.0.1 - - [08/May/2024 14:01:18] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 14:01:18,468 - INFO - 127.0.0.1 - - [08/May/2024 14:01:18] "OPTIONS /api/validate_token HTTP/1.1" 200 -
+2024-05-08 14:01:18,788 - ERROR - Token validation failed: 'JWTManager' object has no attribute 'ExpiredSignatureError'
+2024-05-08 14:01:18,788 - INFO - 127.0.0.1 - - [08/May/2024 14:01:18] "[35m[1mPOST /api/validate_token HTTP/1.1[0m" 500 -
+2024-05-08 14:01:28,694 - INFO - 127.0.0.1 - - [08/May/2024 14:01:28] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:01:29,498 - INFO - 127.0.0.1 - - [08/May/2024 14:01:29] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 14:01:29,514 - INFO - 127.0.0.1 - - [08/May/2024 14:01:29] "OPTIONS /api/validate_token HTTP/1.1" 200 -
+2024-05-08 14:01:29,828 - ERROR - Token validation failed: 'JWTManager' object has no attribute 'ExpiredSignatureError'
+2024-05-08 14:01:29,828 - INFO - 127.0.0.1 - - [08/May/2024 14:01:29] "[35m[1mPOST /api/validate_token HTTP/1.1[0m" 500 -
+2024-05-08 14:02:14,136 - INFO - 127.0.0.1 - - [08/May/2024 14:02:14] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:02:14,964 - INFO - 127.0.0.1 - - [08/May/2024 14:02:14] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 14:02:14,964 - INFO - 127.0.0.1 - - [08/May/2024 14:02:14] "OPTIONS /api/validate_token HTTP/1.1" 200 -
+2024-05-08 14:02:15,292 - ERROR - Token validation failed: 'JWTManager' object has no attribute 'ExpiredSignatureError'
+2024-05-08 14:02:15,292 - INFO - 127.0.0.1 - - [08/May/2024 14:02:15] "[35m[1mPOST /api/validate_token HTTP/1.1[0m" 500 -
+2024-05-08 14:02:45,912 - INFO - 127.0.0.1 - - [08/May/2024 14:02:45] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:02:46,761 - INFO - 127.0.0.1 - - [08/May/2024 14:02:46] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 14:02:46,779 - INFO - 127.0.0.1 - - [08/May/2024 14:02:46] "OPTIONS /api/validate_token HTTP/1.1" 200 -
+2024-05-08 14:02:47,083 - ERROR - Token validation failed: 'JWTManager' object has no attribute 'ExpiredSignatureError'
+2024-05-08 14:02:47,083 - INFO - 127.0.0.1 - - [08/May/2024 14:02:47] "[35m[1mPOST /api/validate_token HTTP/1.1[0m" 500 -
+2024-05-08 14:04:02,025 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 14:04:02,172 - INFO -  * Restarting with stat
+2024-05-08 14:04:03,312 - WARNING -  * Debugger is active!
+2024-05-08 14:04:03,312 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 14:04:06,460 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 14:04:06,761 - INFO -  * Restarting with stat
+2024-05-08 14:04:08,337 - WARNING -  * Debugger is active!
+2024-05-08 14:04:08,337 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 14:04:20,184 - INFO - 127.0.0.1 - - [08/May/2024 14:04:20] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:04:20,971 - ERROR - Login failed: 'bytes' object has no attribute 'encode'
+2024-05-08 14:04:20,971 - INFO - 127.0.0.1 - - [08/May/2024 14:04:20] "[35m[1mPOST /api/login HTTP/1.1[0m" 500 -
+2024-05-08 14:06:24,232 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 14:06:24,373 - INFO -  * Restarting with stat
+2024-05-08 14:06:25,608 - WARNING -  * Debugger is active!
+2024-05-08 14:06:25,608 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 14:07:13,041 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 14:07:13,170 - INFO -  * Restarting with stat
+2024-05-08 14:07:14,386 - WARNING -  * Debugger is active!
+2024-05-08 14:07:14,388 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 14:10:40,475 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 14:10:40,606 - INFO -  * Restarting with stat
+2024-05-08 14:10:41,820 - WARNING -  * Debugger is active!
+2024-05-08 14:10:41,823 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 14:10:49,120 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 14:10:49,297 - INFO -  * Restarting with stat
+2024-05-08 14:10:50,433 - WARNING -  * Debugger is active!
+2024-05-08 14:10:50,435 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 14:11:22,381 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 14:11:22,503 - INFO -  * Restarting with stat
+2024-05-08 14:11:23,663 - WARNING -  * Debugger is active!
+2024-05-08 14:11:23,663 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 14:11:53,531 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 14:11:53,676 - INFO -  * Restarting with stat
+2024-05-08 14:13:40,641 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-05-08 14:13:40,641 - INFO - [33mPress CTRL+C to quit[0m
+2024-05-08 14:13:40,641 - INFO -  * Restarting with stat
+2024-05-08 14:13:41,719 - WARNING -  * Debugger is active!
+2024-05-08 14:13:41,719 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 14:13:54,245 - INFO - 127.0.0.1 - - [08/May/2024 14:13:54] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:13:54,774 - ERROR - Login failed: type object 'datetime.time' has no attribute 'time'
+2024-05-08 14:13:54,774 - INFO - 127.0.0.1 - - [08/May/2024 14:13:54] "[35m[1mPOST /api/login HTTP/1.1[0m" 500 -
+2024-05-08 14:15:00,256 - INFO - 127.0.0.1 - - [08/May/2024 14:15:00] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:15:00,506 - INFO - 127.0.0.1 - - [08/May/2024 14:15:00] "[31m[1mPOST /api/login HTTP/1.1[0m" 401 -
+2024-05-08 14:16:03,204 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 14:16:03,344 - INFO -  * Restarting with stat
+2024-05-08 14:16:04,768 - WARNING -  * Debugger is active!
+2024-05-08 14:16:04,768 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 14:16:16,765 - INFO - 127.0.0.1 - - [08/May/2024 14:16:16] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:16:17,013 - INFO - 127.0.0.1 - - [08/May/2024 14:16:17] "[31m[1mPOST /api/login HTTP/1.1[0m" 401 -
+2024-05-08 14:16:53,455 - INFO - 127.0.0.1 - - [08/May/2024 14:16:53] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:16:54,010 - ERROR - Login failed: type object 'datetime.time' has no attribute 'time'
+2024-05-08 14:16:54,010 - INFO - 127.0.0.1 - - [08/May/2024 14:16:54] "[35m[1mPOST /api/login HTTP/1.1[0m" 500 -
+2024-05-08 14:17:35,571 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 14:17:35,727 - INFO -  * Restarting with stat
+2024-05-08 14:17:37,025 - WARNING -  * Debugger is active!
+2024-05-08 14:17:37,028 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 14:17:39,605 - INFO - 127.0.0.1 - - [08/May/2024 14:17:39] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:17:40,137 - INFO - 127.0.0.1 - - [08/May/2024 14:17:40] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 14:17:40,145 - INFO - 127.0.0.1 - - [08/May/2024 14:17:40] "OPTIONS /api/validate_token HTTP/1.1" 200 -
+2024-05-08 14:17:40,453 - ERROR - Token validation failed: 'JWTManager' object has no attribute 'ExpiredSignatureError'
+2024-05-08 14:17:40,453 - INFO - 127.0.0.1 - - [08/May/2024 14:17:40] "[35m[1mPOST /api/validate_token HTTP/1.1[0m" 500 -
+2024-05-08 14:23:18,831 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 14:23:18,972 - INFO -  * Restarting with stat
+2024-05-08 14:23:20,301 - WARNING -  * Debugger is active!
+2024-05-08 14:23:20,301 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 14:23:51,276 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 14:23:51,416 - INFO -  * Restarting with stat
+2024-05-08 14:23:52,588 - WARNING -  * Debugger is active!
+2024-05-08 14:23:52,588 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 14:26:05,782 - INFO - 127.0.0.1 - - [08/May/2024 14:26:05] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:26:06,298 - INFO - 127.0.0.1 - - [08/May/2024 14:26:06] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 14:26:06,311 - INFO - 127.0.0.1 - - [08/May/2024 14:26:06] "OPTIONS /api/validate_token HTTP/1.1" 200 -
+2024-05-08 14:26:06,621 - ERROR - Token validation failed: 'JWTManager' object has no attribute 'ExpiredSignatureError'
+2024-05-08 14:26:06,621 - INFO - 127.0.0.1 - - [08/May/2024 14:26:06] "[35m[1mPOST /api/validate_token HTTP/1.1[0m" 500 -
+2024-05-08 14:26:19,064 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 14:26:19,220 - INFO -  * Restarting with stat
+2024-05-08 14:26:20,486 - WARNING -  * Debugger is active!
+2024-05-08 14:26:20,486 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 14:26:28,805 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 14:26:28,952 - INFO -  * Restarting with stat
+2024-05-08 14:26:30,121 - WARNING -  * Debugger is active!
+2024-05-08 14:26:30,123 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 14:26:33,252 - INFO - 127.0.0.1 - - [08/May/2024 14:26:33] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:26:33,784 - INFO - 127.0.0.1 - - [08/May/2024 14:26:33] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 14:26:33,799 - INFO - 127.0.0.1 - - [08/May/2024 14:26:33] "OPTIONS /api/validate_token HTTP/1.1" 200 -
+2024-05-08 14:26:34,102 - INFO - 127.0.0.1 - - [08/May/2024 14:26:34] "[35m[1mPOST /api/validate_token HTTP/1.1[0m" 500 -
+2024-05-08 14:27:14,188 - INFO - 127.0.0.1 - - [08/May/2024 14:27:14] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:27:14,758 - INFO - 127.0.0.1 - - [08/May/2024 14:27:14] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 14:27:14,770 - INFO - 127.0.0.1 - - [08/May/2024 14:27:14] "OPTIONS /api/validate_token HTTP/1.1" 200 -
+2024-05-08 14:27:15,086 - INFO - 127.0.0.1 - - [08/May/2024 14:27:15] "[35m[1mPOST /api/validate_token HTTP/1.1[0m" 500 -
+2024-05-08 14:27:25,054 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 14:27:25,195 - INFO -  * Restarting with stat
+2024-05-08 14:27:26,581 - WARNING -  * Debugger is active!
+2024-05-08 14:27:26,585 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 14:27:28,612 - INFO - 127.0.0.1 - - [08/May/2024 14:27:28] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:27:29,128 - INFO - 127.0.0.1 - - [08/May/2024 14:27:29] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 14:27:29,137 - INFO - 127.0.0.1 - - [08/May/2024 14:27:29] "OPTIONS /api/validate_token HTTP/1.1" 200 -
+2024-05-08 14:27:29,453 - INFO - 127.0.0.1 - - [08/May/2024 14:27:29] "[35m[1mPOST /api/validate_token HTTP/1.1[0m" 500 -
+2024-05-08 14:27:48,396 - INFO - 127.0.0.1 - - [08/May/2024 14:27:48] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:27:48,978 - INFO - 127.0.0.1 - - [08/May/2024 14:27:48] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 14:27:48,989 - INFO - 127.0.0.1 - - [08/May/2024 14:27:48] "OPTIONS /api/validate_token HTTP/1.1" 200 -
+2024-05-08 14:27:49,301 - INFO - 127.0.0.1 - - [08/May/2024 14:27:49] "[35m[1mPOST /api/validate_token HTTP/1.1[0m" 500 -
+2024-05-08 14:29:06,764 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 14:29:06,919 - INFO -  * Restarting with stat
+2024-05-08 14:29:08,315 - WARNING -  * Debugger is active!
+2024-05-08 14:29:08,315 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 14:30:09,285 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 14:30:09,426 - INFO -  * Restarting with stat
+2024-05-08 14:30:10,649 - WARNING -  * Debugger is active!
+2024-05-08 14:30:10,649 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 14:30:22,046 - INFO - 127.0.0.1 - - [08/May/2024 14:30:22] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:30:22,562 - INFO - 127.0.0.1 - - [08/May/2024 14:30:22] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 14:30:22,573 - INFO - 127.0.0.1 - - [08/May/2024 14:30:22] "OPTIONS /api/validate_token HTTP/1.1" 200 -
+2024-05-08 14:30:22,879 - INFO - 127.0.0.1 - - [08/May/2024 14:30:22] "[35m[1mPOST /api/validate_token HTTP/1.1[0m" 500 -
+2024-05-08 14:31:44,955 - INFO - 127.0.0.1 - - [08/May/2024 14:31:44] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:31:45,471 - INFO - 127.0.0.1 - - [08/May/2024 14:31:45] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 14:31:45,485 - INFO - 127.0.0.1 - - [08/May/2024 14:31:45] "OPTIONS /api/validate_token HTTP/1.1" 200 -
+2024-05-08 14:31:45,793 - INFO - 127.0.0.1 - - [08/May/2024 14:31:45] "[35m[1mPOST /api/validate_token HTTP/1.1[0m" 500 -
+2024-05-08 14:32:32,330 - INFO - 127.0.0.1 - - [08/May/2024 14:32:32] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:32:32,887 - INFO - 127.0.0.1 - - [08/May/2024 14:32:32] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 14:32:57,006 - INFO - 127.0.0.1 - - [08/May/2024 14:32:57] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:32:57,560 - INFO - 127.0.0.1 - - [08/May/2024 14:32:57] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 14:47:44,549 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 14:47:44,694 - INFO -  * Restarting with stat
+2024-05-08 14:47:46,148 - WARNING -  * Debugger is active!
+2024-05-08 14:47:46,148 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 14:48:09,864 - INFO - 127.0.0.1 - - [08/May/2024 14:48:09] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:48:10,396 - INFO - 127.0.0.1 - - [08/May/2024 14:48:10] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 14:49:24,448 - INFO - 127.0.0.1 - - [08/May/2024 14:49:24] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:49:24,964 - INFO - 127.0.0.1 - - [08/May/2024 14:49:24] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 14:49:24,975 - INFO - 127.0.0.1 - - [08/May/2024 14:49:24] "OPTIONS /api/validate_token HTTP/1.1" 200 -
+2024-05-08 14:49:25,290 - ERROR - Token validation failed: 'identity'
+2024-05-08 14:49:25,290 - INFO - 127.0.0.1 - - [08/May/2024 14:49:25] "[35m[1mPOST /api/validate_token HTTP/1.1[0m" 500 -
+2024-05-08 14:52:55,779 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 14:52:55,914 - INFO -  * Restarting with stat
+2024-05-08 14:52:57,337 - WARNING -  * Debugger is active!
+2024-05-08 14:52:57,337 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 14:52:59,986 - INFO - 127.0.0.1 - - [08/May/2024 14:52:59] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:53:00,517 - INFO - 127.0.0.1 - - [08/May/2024 14:53:00] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 14:53:00,531 - INFO - 127.0.0.1 - - [08/May/2024 14:53:00] "OPTIONS /api/validate_token HTTP/1.1" 200 -
+2024-05-08 14:53:00,849 - INFO - 127.0.0.1 - - [08/May/2024 14:53:00] "[31m[1mPOST /api/validate_token HTTP/1.1[0m" 401 -
+2024-05-08 14:53:17,146 - INFO - 127.0.0.1 - - [08/May/2024 14:53:17] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:53:17,707 - INFO - 127.0.0.1 - - [08/May/2024 14:53:17] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 14:53:17,718 - INFO - 127.0.0.1 - - [08/May/2024 14:53:17] "OPTIONS /api/validate_token HTTP/1.1" 200 -
+2024-05-08 14:53:18,033 - INFO - 127.0.0.1 - - [08/May/2024 14:53:18] "[31m[1mPOST /api/validate_token HTTP/1.1[0m" 401 -
+2024-05-08 14:53:22,897 - INFO - 127.0.0.1 - - [08/May/2024 14:53:22] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:53:23,452 - INFO - 127.0.0.1 - - [08/May/2024 14:53:23] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 14:53:23,470 - INFO - 127.0.0.1 - - [08/May/2024 14:53:23] "OPTIONS /api/validate_token HTTP/1.1" 200 -
+2024-05-08 14:53:23,781 - INFO - 127.0.0.1 - - [08/May/2024 14:53:23] "[31m[1mPOST /api/validate_token HTTP/1.1[0m" 401 -
+2024-05-08 14:54:06,650 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 14:54:06,806 - INFO -  * Restarting with stat
+2024-05-08 14:54:08,146 - WARNING -  * Debugger is active!
+2024-05-08 14:54:08,149 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 14:54:09,975 - INFO - 127.0.0.1 - - [08/May/2024 14:54:09] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:54:10,491 - INFO - 127.0.0.1 - - [08/May/2024 14:54:10] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 14:54:10,507 - INFO - 127.0.0.1 - - [08/May/2024 14:54:10] "OPTIONS /api/validate_token HTTP/1.1" 200 -
+2024-05-08 14:54:10,817 - INFO - 127.0.0.1 - - [08/May/2024 14:54:10] "[31m[1mPOST /api/validate_token HTTP/1.1[0m" 401 -
+2024-05-08 14:54:25,348 - INFO - 127.0.0.1 - - [08/May/2024 14:54:25] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:54:25,915 - INFO - 127.0.0.1 - - [08/May/2024 14:54:25] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 14:54:25,932 - INFO - 127.0.0.1 - - [08/May/2024 14:54:25] "OPTIONS /api/validate_token HTTP/1.1" 200 -
+2024-05-08 14:54:26,248 - INFO - 127.0.0.1 - - [08/May/2024 14:54:26] "[31m[1mPOST /api/validate_token HTTP/1.1[0m" 401 -
+2024-05-08 14:57:04,805 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 14:57:04,930 - INFO -  * Restarting with stat
+2024-05-08 14:57:06,158 - WARNING -  * Debugger is active!
+2024-05-08 14:57:06,158 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 14:57:19,373 - INFO - 127.0.0.1 - - [08/May/2024 14:57:19] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 14:57:19,896 - INFO - 127.0.0.1 - - [08/May/2024 14:57:19] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 14:57:19,911 - INFO - 127.0.0.1 - - [08/May/2024 14:57:19] "OPTIONS /api/validate_token HTTP/1.1" 200 -
+2024-05-08 14:57:20,224 - INFO - 127.0.0.1 - - [08/May/2024 14:57:20] "[31m[1mPOST /api/validate_token HTTP/1.1[0m" 401 -
+2024-05-08 15:00:12,091 - INFO - 127.0.0.1 - - [08/May/2024 15:00:12] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 15:00:12,665 - INFO - 127.0.0.1 - - [08/May/2024 15:00:12] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 15:01:53,899 - INFO - 127.0.0.1 - - [08/May/2024 15:01:53] "OPTIONS /api/register HTTP/1.1" 200 -
+2024-05-08 15:01:54,146 - ERROR - [EMAIL_ERR] ERROR: Invalid email format
+2024-05-08 15:01:54,146 - INFO - 127.0.0.1 - - [08/May/2024 15:01:54] "[31m[1mPOST /api/register HTTP/1.1[0m" 400 -
+2024-05-08 15:02:00,731 - INFO - 127.0.0.1 - - [08/May/2024 15:02:00] "OPTIONS /api/register HTTP/1.1" 200 -
+2024-05-08 15:02:01,737 - INFO - [INFO-REG-SUCCESS] User registered successfully: voihelevetti@gmail.com
+2024-05-08 15:02:01,752 - INFO - 127.0.0.1 - - [08/May/2024 15:02:01] "[35m[1mPOST /api/register HTTP/1.1[0m" 201 -
+2024-05-08 15:11:41,919 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 15:11:42,067 - INFO -  * Restarting with stat
+2024-05-08 15:11:43,344 - WARNING -  * Debugger is active!
+2024-05-08 15:11:43,344 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 15:12:16,394 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 15:12:16,595 - INFO -  * Restarting with stat
+2024-05-08 15:12:17,888 - WARNING -  * Debugger is active!
+2024-05-08 15:12:17,903 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 15:16:32,721 - INFO - 127.0.0.1 - - [08/May/2024 15:16:32] "OPTIONS /api/register HTTP/1.1" 200 -
+2024-05-08 15:16:33,701 - INFO - [INFO-REG-SUCCESS] User registered successfully: apua@gmail.com
+2024-05-08 15:16:33,701 - INFO - 127.0.0.1 - - [08/May/2024 15:16:33] "[35m[1mPOST /api/register HTTP/1.1[0m" 201 -
+2024-05-08 15:20:11,243 - INFO - 127.0.0.1 - - [08/May/2024 15:20:11] "[33mGET /api/getToken HTTP/1.1[0m" 404 -
+2024-05-08 15:20:11,491 - INFO - 127.0.0.1 - - [08/May/2024 15:20:11] "[33mGET /api/getToken HTTP/1.1[0m" 404 -
+2024-05-08 15:20:51,920 - INFO - 127.0.0.1 - - [08/May/2024 15:20:51] "[33mGET /api/getToken HTTP/1.1[0m" 404 -
+2024-05-08 15:20:55,492 - INFO - 127.0.0.1 - - [08/May/2024 15:20:55] "[33mGET /api/getToken HTTP/1.1[0m" 404 -
+2024-05-08 15:20:55,751 - INFO - 127.0.0.1 - - [08/May/2024 15:20:55] "[33mGET /api/getToken HTTP/1.1[0m" 404 -
+2024-05-08 15:21:13,885 - INFO - 127.0.0.1 - - [08/May/2024 15:21:13] "OPTIONS /api/register HTTP/1.1" 200 -
+2024-05-08 15:21:14,893 - INFO - [INFO-REG-SUCCESS] User registered successfully: vvv@gmail.com
+2024-05-08 15:21:14,893 - INFO - 127.0.0.1 - - [08/May/2024 15:21:14] "[35m[1mPOST /api/register HTTP/1.1[0m" 201 -
+2024-05-08 15:23:52,819 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 15:23:52,970 - INFO -  * Restarting with stat
+2024-05-08 15:23:54,244 - WARNING -  * Debugger is active!
+2024-05-08 15:23:54,246 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 15:24:01,537 - INFO -  * Detected change in 'C:\\Users\\johan\\userauth\\backend\\server.py', reloading
+2024-05-08 15:24:01,697 - INFO -  * Restarting with stat
+2024-05-08 15:24:03,071 - WARNING -  * Debugger is active!
+2024-05-08 15:24:03,071 - INFO -  * Debugger PIN: 342-036-137
+2024-05-08 15:26:59,283 - INFO - 127.0.0.1 - - [08/May/2024 15:26:59] "OPTIONS /api/register HTTP/1.1" 200 -
+2024-05-08 15:27:00,295 - INFO - [INFO-REG-SUCCESS] User registered successfully: sss@gmail.com
+2024-05-08 15:27:00,295 - INFO - 127.0.0.1 - - [08/May/2024 15:27:00] "[35m[1mPOST /api/register HTTP/1.1[0m" 201 -
+2024-05-08 15:27:00,310 - INFO - 127.0.0.1 - - [08/May/2024 15:27:00] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 15:27:00,881 - INFO - 127.0.0.1 - - [08/May/2024 15:27:00] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 15:30:14,495 - INFO - 127.0.0.1 - - [08/May/2024 15:30:14] "OPTIONS /api/register HTTP/1.1" 200 -
+2024-05-08 15:30:15,439 - INFO - [INFO-REG-SUCCESS] User registered successfully: mmmm@gmail.com
+2024-05-08 15:30:15,439 - INFO - 127.0.0.1 - - [08/May/2024 15:30:15] "[35m[1mPOST /api/register HTTP/1.1[0m" 201 -
+2024-05-08 15:30:15,439 - INFO - 127.0.0.1 - - [08/May/2024 15:30:15] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 15:30:16,007 - INFO - 127.0.0.1 - - [08/May/2024 15:30:16] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 15:37:06,677 - INFO - 127.0.0.1 - - [08/May/2024 15:37:06] "OPTIONS /api/register HTTP/1.1" 200 -
+2024-05-08 15:37:07,690 - INFO - [INFO-REG-SUCCESS] User registered successfully: dsdsdas@gmail.com
+2024-05-08 15:37:07,690 - INFO - 127.0.0.1 - - [08/May/2024 15:37:07] "[35m[1mPOST /api/register HTTP/1.1[0m" 201 -
+2024-05-08 15:37:07,690 - INFO - 127.0.0.1 - - [08/May/2024 15:37:07] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 15:37:08,260 - INFO - 127.0.0.1 - - [08/May/2024 15:37:08] "POST /api/login HTTP/1.1" 200 -
+2024-05-08 15:40:48,984 - INFO - 127.0.0.1 - - [08/May/2024 15:40:48] "OPTIONS /api/register HTTP/1.1" 200 -
+2024-05-08 15:40:50,086 - INFO - [INFO-REG-SUCCESS] User registered successfully: mkk@gmail.com
+2024-05-08 15:40:50,086 - INFO - 127.0.0.1 - - [08/May/2024 15:40:50] "[35m[1mPOST /api/register HTTP/1.1[0m" 201 -
+2024-05-08 15:40:50,102 - INFO - 127.0.0.1 - - [08/May/2024 15:40:50] "OPTIONS /api/login HTTP/1.1" 200 -
+2024-05-08 15:40:50,669 - INFO - 127.0.0.1 - - [08/May/2024 15:40:50] "POST /api/login HTTP/1.1" 200 -

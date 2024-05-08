@@ -101,27 +101,36 @@ const Game = ({ logout }) => {
   };
 
   return (
-    <div>
-      {!gameStarted && ( // Render the Start Game button if the game has not started
-        <button onClick={handleStartGame}>Start Game</button>
-      )}
-      {gameStarted && ( // Render the game elements only if the game has started
-        <div id="game" className={isGameOver ? "over" : ""} onClick={handleJump}>
-          <div id="character"></div>
-          <div id="block" className="block" style={{ top: blockPosition.top, left: blockPosition.left }}></div>
-          {isGameOver && (
-            <div className="game-over-container">
-              <div className="game-over">
-                <p>Game Over</p>
-                <button onClick={handleRestartGame}>Restart Game</button>
-                <button onClick={handleLogout}>Logout</button>
+    <div id="game" className={isGameOver ? "over" : ""} onClick={handleJump}>
+      <div className="game-content">
+        {gameStarted && (
+          <>
+            <div id="character"></div>
+            <div id="block" className="block" style={{ top: blockPosition.top, left: blockPosition.left }}></div>
+            {isGameOver && (
+              <div className="game-over-container">
+                <div className="game-over">
+                  <p>Game Over</p>
+                  <div className="game-over-buttons">
+                    <button onClick={handleRestartGame}>Restart Game</button>
+                    <button onClick={handleLogout}>Logout</button>
+                  </div>
+                </div>
               </div>
-            </div>
-          )}
-        </div>
-      )}
+            )}
+          </>
+        )}
+        {!gameStarted && (
+          <div className="start-game-container">
+            <button onClick={handleStartGame}>Start Game</button>
+          </div>
+        )}
+      </div>
     </div>
   );
+  
+  
+  
 };
 
 export default Game;

@@ -12,6 +12,7 @@ const RegisterModal = ({ token }) => {
   const [captchaValue, setCaptchaValue] = useState('');
   const [message, setMessage] = useState('');
   const [showPopup, setShowPopup] = useState(false);
+  const [hashToken, sethashToken] = useState('');
 
   const handleRegister = async () => {
     try {
@@ -68,6 +69,33 @@ const RegisterModal = ({ token }) => {
     }
     return false;
   };
+  // Function to handle user login
+  const handleLogin = async () => {
+    try {
+      // Validate CAPTCHA
+      if (!captchaValue) {
+        setMessage('Please complete the CAPTCHA.');
+        return;
+      }
+
+      // Send login request to the server
+      const response = await axios.post('http://localhost:5000/api/login', {
+        email,
+        password,
+        recaptchaResponse: captchaValue,
+      });
+
+      // Handle server response
+      const { token } = response.data;
+      if (token) {
+        // Store the hashed token in local storage
+        sethashToken(token)
+        console.log('Hashed Access Token:', token);
+      }
+    } catch (error) {
+      setMessage('Authentication failed: username or password was incorrect');
+    }
+  };
 
   const handleSubmit = async () => {
     if (!email || !password || !retypePassword || !captchaValue) {
@@ -76,6 +104,7 @@ const RegisterModal = ({ token }) => {
     }
     const registrationSuccess = await handleRegister();
     if (registrationSuccess) {
+      handleLogin();
       setShowPopup(true);
     }
   };
@@ -123,14 +152,16 @@ const RegisterModal = ({ token }) => {
       {showPopup && (
         <div className="popup" style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 999, border: '5px solid #FF69B4', borderRadius: '10px', backgroundColor: '#FDF5E6', boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.3)', display: 'flex', flexDirection: 'column' }}>
           <div style={{ backgroundColor: '#FF69B4', color: '#fff', padding: '20px', borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }}>
-            <h2 style={{alignSelf: 'center'}}> Please validate your email</h2>
+            <h2 style={{ alignSelf: 'center' }}> Please validate your email</h2>
           </div>
           <div style={{ backgroundColor: '#F9F9F9', padding: '20px', textAlign: 'center' }}>
             <p>The validation email has been sent to the address below</p>
-            <p style={{ textAlign: 'center', color: '#6A5ACD'}}>{email}</p>
+            <p style={{ textAlign: 'center', color: '#6A5ACD' }}>{email}</p>
             <p>To verify your account and embark on the adventurous journey with Squiggles the Octopus, please click the link below:</p>
             <p id="validation-message"></p>
-            <Link to={`/game?token=${token}`} onClick={() => setShowPopup(false)} style={{ color: '#FF69B4', textDecoration: 'none', alignSelf: 'center' }}>https://www.jumpingjourneyofsquiggles.com/verify?token={token}</Link>
+            <Link to={`/game?token=${hashToken}`} onClick={() => setShowPopup(false)} className="popup-link">
+              https://www.jumpingjourneyofsquiggles.com/verify?token={hashToken}
+            </Link>
 
           </div>
         </div>
