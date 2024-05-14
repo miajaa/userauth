@@ -22,6 +22,8 @@ from flask_limiter.util import get_remote_address
 load_dotenv()    
 # Google reCAPTCHA site secret
 RECAPTCHA_SECRET_KEY = os.getenv('RECAPTCHA_SECRET_KEY')
+
+REDIRECT_URL = os.getenv('RECAPTCHA_SECRET_KEY')
 # Secret key 
 SECRET_KEY = os.getenv("SECRET_KEY")
 ################################################################
@@ -245,7 +247,7 @@ def oauth2_callback():
                 access_token = create_access_token(identity=email)
                 return jsonify(token=access_token), 200
             else:
-                return jsonify(error='Email not found in user info'), 400
+                return jsonify(error='User not found in user info'), 400
         else:
             return jsonify(error='Failed to verify access token'), 400
 
@@ -253,6 +255,28 @@ def oauth2_callback():
         logging.error("OAuth2 callback failed: %s", str(e))
         return jsonify(error='OAuth2 callback failed'), 500
 
+@app.route('/api/logout', methods=['POST'])
+def logout():
+    try:
+        data = request.json
+        token = data.get('token')
+
+        if not token:
+            return jsonify(error='Token missing'), 400
+
+        user = User.query.filter_by(accesstoken=token).first()
+
+        if user:
+            # Nullify the access token in the database
+            user.accesstoken = None
+            db.session.commit()
+            logging.info("User logged out successfully")
+            return jsonify(message='Logout successful'), 200
+        else:
+            return jsonify(error='User not found'), 404
+    except Exception as e:
+        logging.error("Logout failed: %s", str(e))
+        return jsonify(error='Internal server error'), 500
 
 if __name__ == '__main__':
     app.run(debug=False)

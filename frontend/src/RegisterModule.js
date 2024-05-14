@@ -13,14 +13,13 @@ const RegisterModal = ({ token }) => {
   const [message, setMessage] = useState('');
   const [showPopup, setShowPopup] = useState(false);
   const [hashToken, sethashToken] = useState('');
+    //environment variables
+    const REGISTER_ENDPOINT = process.env.REACT_APP_REGISTER_ENDPOINT;
+    const LOGIN_ENDPOINT = process.env.REACT_APP_LOGIN_ENDPOINT;
 
-  //environment variables
-  const REGISTER_ENDPOINT = process.env.REACT_APP_REGISTER_ENDPOINT;
-  const LOGIN_ENDPOINT = process.env.REACT_APP_LOGIN_ENDPOINT;
 
   const handleRegister = async () => {
     try {
-      console.log("Token Prop Value:", token);
       if (password !== retypePassword) {
         setMessage('Passwords do not match.');
         return false; // Return unsuccessful
@@ -76,9 +75,8 @@ const RegisterModal = ({ token }) => {
   // Function to handle user login
   const handleLogin = async () => {
     try {
-      // Validate CAPTCHA
-      if (!captchaValue) {
-        setMessage('Please complete the CAPTCHA.');
+      if (!captchaValue || !email ||!password) {
+        setMessage('Please complete the CAPTCHA and make sure no field is empty.');
         return;
       }
 
@@ -94,7 +92,6 @@ const RegisterModal = ({ token }) => {
       if (token) {
         // Store the hashed token in local storage
         sethashToken(token)
-        console.log('Hashed Access Token:', token);
       }
     } catch (error) {
       setMessage('Authentication failed: username or password was incorrect');
