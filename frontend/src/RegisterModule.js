@@ -14,6 +14,10 @@ const RegisterModal = ({ token }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [hashToken, sethashToken] = useState('');
 
+  //environment variables
+  const REGISTER_ENDPOINT = process.env.REACT_APP_REGISTER_ENDPOINT;
+  const LOGIN_ENDPOINT = process.env.REACT_APP_LOGIN_ENDPOINT;
+
   const handleRegister = async () => {
     try {
       console.log("Token Prop Value:", token);
@@ -27,7 +31,7 @@ const RegisterModal = ({ token }) => {
         return false; // Return unsuccessful
       }
 
-      const response = await axios.post('http://localhost:5000/api/register', {
+      const response = await axios.post(REGISTER_ENDPOINT, {
         email,
         password,
         recaptchaResponse: captchaValue,
@@ -79,7 +83,7 @@ const RegisterModal = ({ token }) => {
       }
 
       // Send login request to the server
-      const response = await axios.post('http://localhost:5000/api/login', {
+      const response = await axios.post(LOGIN_ENDPOINT, {
         email,
         password,
         recaptchaResponse: captchaValue,

@@ -123,6 +123,7 @@ const Game = ({ logout }) => {
         {!gameStarted && (
           <div className="start-game-container">
             <button onClick={handleStartGame}>Start Game</button>
+            <button onClick={handleLogout}>Logout</button>
           </div>
         )}
       </div>
