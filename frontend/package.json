@@ -6,19 +6,21 @@
     "@testing-library/jest-dom": "latest",
     "@testing-library/react": "latest",
     "@testing-library/user-event": "latest",
-    "tar": ">=6.2.1",
     "axios": "latest",
     "dotenv": "latest",
-    "nth-check": ">=2.0.1",
-    "postcss": ">=8.4.31",
     "express": ">=4.19.2",
+    "nth-check": "^2.0.1",
+    "postcss": "^8.4.31",
     "react": "latest",
     "react-dom": "latest",
     "react-google-recaptcha": "latest",
     "react-router-dom": "latest",
-    "react-scripts": "latest", 
     "styled-components": "latest",
+    "tar": ">=6.2.1",
     "web-vitals": "latest"
+  },
+  "devDependencies": {
+    "react-scripts": ">=4.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
